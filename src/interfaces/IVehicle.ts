@@ -20,6 +20,15 @@ export const VehicleZodSchema = z.object({
     .lte(2022, { message: 'Year must be less than 2022' })
     .gte(1900, { message: 'Year must be greater than 1900' }),
 
+  color: z
+    .string({
+      required_error: 'Color is required',
+      invalid_type_error: 'Color must be a string',
+    })
+    .min(3, {
+      message: 'Color must be 3 or more characters long',
+    }),
+
 });
 
 export type IVehicle = z.infer<typeof VehicleZodSchema>;
