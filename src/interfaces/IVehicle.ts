@@ -29,8 +29,16 @@ export const VehicleZodSchema = z.object({
       message: 'Color must be 3 or more characters long',
     }),
     
-  status: z.optional(z.boolean({ invalid_type_error: 'Status must be a boolean' })),
+  status: z
+    .optional(z.boolean({
+      invalid_type_error: 'Status must be a boolean' })),
 
+  buyValue: z
+    .number({
+      required_error: 'BuyValue is required',
+      invalid_type_error: 'BuyValue must be a number',
+    })
+    .int({ message: 'Must be a integer' }),
 });
 
 export type IVehicle = z.infer<typeof VehicleZodSchema>;
