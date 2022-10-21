@@ -28,6 +28,8 @@ export const VehicleZodSchema = z.object({
     .min(3, {
       message: 'Color must be 3 or more characters long',
     }),
+    
+  status: z.optional(z.boolean({ invalid_type_error: 'Status must be a boolean' })),
 
 });
 
