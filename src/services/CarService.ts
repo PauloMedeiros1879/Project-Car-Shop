@@ -1,8 +1,7 @@
-import { IService } from '../interfaces/IService';
 import { CarZodSchema, ICar } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 
-export default class CarService implements IService<ICar> {
+export default class CarService implements IModel<ICar> {
   private _car: IModel<ICar>;
 
   constructor(model: IModel<ICar>) {
