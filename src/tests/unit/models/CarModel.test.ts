@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import CarModel from '../../../models/CarModel';
 import { Model } from 'mongoose';
 import { carMock, carMockId } from '../mocks/carMock';
+import { ErrorTypes } from '../../../middlewares/errorTypes';
 
 describe('Car Model tests', () => {
   const carsModel = new CarModel();
@@ -26,6 +27,14 @@ describe('Car Model tests', () => {
     it('successfully found', async () => {
       const carFound = await carsModel.readOne('62cf1fc6498565d94eba52cd');
       expect(carFound).to.be.deep.equal(carMockId);
+    });
+
+    it('_id não encontrado', async () => {
+      try {
+        await carsModel.readOne('123ERRADO');
+      } catch (error: any) {
+        expect(error.message).to.be.eq(ErrorTypes.InvalidMongoId);
+      }
     });
   });
 });
