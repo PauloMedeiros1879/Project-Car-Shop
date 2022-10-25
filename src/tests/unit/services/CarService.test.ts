@@ -1,12 +1,17 @@
+import { expect } from 'chai';
 import * as sinon from 'sinon';
+import { ZodError } from 'zod';
 import CarModel from '../../../models/CarModel';
+import CarService from '../../../services/CarService';
 import {
+  carMock,
   carMockId,
   carMockIdUpdated,
 } from '../../unit/mocks/carMock';
 
 describe('Car Service testes', () => {
   const carModel = new CarModel();
+  const carService = new CarService(carModel);
 
   before(() => {
     sinon.stub(carModel, 'create').resolves(carMockId);
@@ -35,4 +40,20 @@ describe('Car Service testes', () => {
 
   after(() => sinon.restore());
 
+  describe('Create Car', () => {
+    it('Sucesso', async () => {
+      const carCreated = await carService.create(carMock);
+      expect(carCreated).to.be.deep.equal(carMockId);
+    });
+
+    it('Falha', async () => {
+      let error;
+      try {
+        await carService.create({});
+      } catch (err) {
+        error = err;
+      }
+      expect(error).to.be.instanceOf(ZodError);
+    });
+  });
 });

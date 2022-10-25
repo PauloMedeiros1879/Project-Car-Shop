@@ -1,5 +1,3 @@
-
-
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { Request, Response } from 'express';
@@ -29,7 +27,7 @@ describe('Car Controller testes', () => {
   after(() => sinon.restore());
 
   describe('Criando um carro', () => {
-    it('Success', async () => {
+    it('Sucesso!', async () => {
       req.body = carMock;
       await carController.create(req, res);
       expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;

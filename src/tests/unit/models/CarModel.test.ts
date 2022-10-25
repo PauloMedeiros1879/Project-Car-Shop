@@ -24,7 +24,7 @@ describe('Car Model tests', () => {
   });
 
   describe('Procurando um carro', () => {
-    it('successfully found', async () => {
+    it('encontrado com sucesso', async () => {
       const carFound = await carsModel.readOne('62cf1fc6498565d94eba52cd');
       expect(carFound).to.be.deep.equal(carMockId);
     });
