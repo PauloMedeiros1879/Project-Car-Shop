@@ -60,4 +60,11 @@ describe('Car Service testes', () => {
       expect(error.message).equal(ErrorTypes.EntityNotFound);
     });
   });
+
+  describe('Read Cars', () => {
+    it('Sucesso', async () => {
+      const carsArray = await carService.read();
+      expect(carsArray).to.be.deep.equal([carMockId]);
+    });
+  });
 });
