@@ -63,8 +63,8 @@ describe('Car Service testes', () => {
 
   describe('Read Cars', () => {
     it('Sucesso', async () => {
-      const carsArray = await carService.read();
-      expect(carsArray).to.be.deep.equal([carMockId]);
+      const carArray = await carService.read();
+      expect(carArray).to.be.deep.equal([carMockId]);
     });
   });
 });
