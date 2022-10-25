@@ -11,7 +11,7 @@ import {
   carMockId,
 } from '../../unit/mocks/carMock';
 
-describe('Car Controller', () => {
+describe('Car Controller testes', () => {
   const carModel = new CarsModel();
   const carService = new CarsService(carModel);
   const carController = new CarsController(carService);
@@ -28,7 +28,7 @@ describe('Car Controller', () => {
 
   after(() => sinon.restore());
 
-  describe('Create Car', () => {
+  describe('Criando um carro', () => {
     it('Success', async () => {
       req.body = carMock;
       await carController.create(req, res);
