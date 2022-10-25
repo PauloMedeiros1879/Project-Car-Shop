@@ -3,10 +3,10 @@ import * as sinon from 'sinon';
 import { ZodError } from 'zod';
 import CarModel from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
+import { ErrorTypes } from '../../../middlewares/errorTypes';
 import {
   carMock,
   carMockId,
-  carMockIdUpdated,
 } from '../../unit/mocks/carMock';
 
 describe('Car Service testes', () => {
@@ -22,20 +22,6 @@ describe('Car Service testes', () => {
       .onCall(1)
       .resolves(null);
     sinon.stub(carModel, 'read').resolves([carMockId]);
-    sinon
-      .stub(carModel, 'delete')
-      .onCall(0)
-      .resolves(carMockId)
-      .onCall(1)
-      .resolves(null);
-    sinon
-      .stub(carModel, 'update')
-      .onCall(0)
-      .resolves(carMockIdUpdated)
-      .onCall(1)
-      .resolves(null)
-      .onCall(2)
-      .resolves(null);
   });
 
   after(() => sinon.restore());
@@ -54,6 +40,24 @@ describe('Car Service testes', () => {
         error = err;
       }
       expect(error).to.be.instanceOf(ZodError);
+    });
+  });
+
+  describe('ReadOne Car', () => {
+    it('Sucesso', async () => {
+      const carCreated = await carService.readOne(carMockId._id);
+      expect(carCreated).to.be.deep.equal(carMockId);
+    });
+
+    it('Falha', async () => {
+      let error;
+      try {
+        await carService.readOne(carMockId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined');
+      expect(error.message).equal(ErrorTypes.EntityNotFound);
     });
   });
 });
