@@ -37,4 +37,11 @@ describe('Car Model tests', () => {
       }
     });
   });
+
+  describe('Procurando todos os carros', () => {
+    it('encontrado com sucesso', async () => {
+      const carFound = await carsModel.read();
+      expect(carFound).to.be.deep.equal([carMockId]);
+    });
+  });
 });
