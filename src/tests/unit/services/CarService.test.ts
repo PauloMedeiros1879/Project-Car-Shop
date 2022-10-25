@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { ZodError } from 'zod';
+import { ErrorTypes } from '../../../middlewares/errorTypes';
 import CarModel from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
-import { ErrorTypes } from '../../../middlewares/errorTypes';
 import {
   carMock,
   carMockId,
-} from '../../unit/mocks/carMock';
+} from '../mocks/carMock';
 
 describe('Car Service testes', () => {
   const carModel = new CarModel();

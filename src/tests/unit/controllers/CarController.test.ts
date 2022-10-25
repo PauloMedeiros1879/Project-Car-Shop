@@ -7,7 +7,7 @@ import CarsController from '../../../controllers/CarController';
 import {
   carMock,
   carMockId,
-} from '../../unit/mocks/carMock';
+} from '../mocks/carMock';
 
 describe('Car Controller testes', () => {
   const carModel = new CarsModel();
@@ -19,6 +19,8 @@ describe('Car Controller testes', () => {
 
   before(() => {
     sinon.stub(carService, 'create').resolves(carMockId);
+    sinon.stub(carService, 'readOne').resolves(carMockId);
+    sinon.stub(carService, 'read').resolves([carMockId]);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
