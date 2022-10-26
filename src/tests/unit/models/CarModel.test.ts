@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 import { carMock, carMockId } from '../mocks/carMock';
 import { ErrorTypes } from '../../../middlewares/errorTypes';
 
-describe('Car Model tests', () => {
+describe('Testa o Car Model tests', () => {
   const carsModel = new CarModel();
 
   before(() => {
@@ -16,14 +16,14 @@ describe('Car Model tests', () => {
 
   after(() => sinon.restore());
 
-  describe('Criando um carro novo', () => {
+  describe('Testa o Create() Cars', () => {
     it('Criado com sucesso', async () => {
       const newCar = await carsModel.create(carMock);
       expect(newCar).to.be.deep.equal(carMockId);
     });
   });
 
-  describe('Procurando um carro', () => {
+  describe('Testa o ReadOne() Cars', () => {
     it('encontrado com sucesso', async () => {
       const carFound = await carsModel.readOne('62cf1fc6498565d94eba52cd');
       expect(carFound).to.be.deep.equal(carMockId);
@@ -38,7 +38,7 @@ describe('Car Model tests', () => {
     });
   });
 
-  describe('Procurando todos os carros', () => {
+  describe('Testa o Read() Cars', () => {
     it('encontrado com sucesso', async () => {
       const carFound = await carsModel.read();
       expect(carFound).to.be.deep.equal([carMockId]);

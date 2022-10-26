@@ -9,7 +9,7 @@ import {
   carMockId,
 } from '../mocks/carMock';
 
-describe('Car Service testes', () => {
+describe('Testa o Car Service testes', () => {
   const carModel = new CarModel();
   const carService = new CarService(carModel);
 
@@ -26,7 +26,7 @@ describe('Car Service testes', () => {
 
   after(() => sinon.restore());
 
-  describe('Create Car', () => {
+  describe('Testa o Create() Cars', () => {
     it('Sucesso', async () => {
       const carCreated = await carService.create(carMock);
       expect(carCreated).to.be.deep.equal(carMockId);
@@ -43,7 +43,7 @@ describe('Car Service testes', () => {
     });
   });
 
-  describe('ReadOne Car', () => {
+  describe('Testa o ReadOne() Cars', () => {
     it('Sucesso', async () => {
       const carCreated = await carService.readOne(carMockId._id);
       expect(carCreated).to.be.deep.equal(carMockId);
@@ -61,7 +61,7 @@ describe('Car Service testes', () => {
     });
   });
 
-  describe('Read Cars', () => {
+  describe('Testa o Read() Cars', () => {
     it('Sucesso', async () => {
       const carArray = await carService.read();
       expect(carArray).to.be.deep.equal([carMockId]);

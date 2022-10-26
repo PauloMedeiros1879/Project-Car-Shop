@@ -9,7 +9,7 @@ import {
   carMockId,
 } from '../mocks/carMock';
 
-describe('Car Controller testes', () => {
+describe('Testa o Car Controller testes', () => {
   const carModel = new CarsModel();
   const carService = new CarsService(carModel);
   const carController = new CarsController(carService);
@@ -28,7 +28,7 @@ describe('Car Controller testes', () => {
 
   after(() => sinon.restore());
 
-  describe('Criando um carro', () => {
+  describe('Testa o Create() Cars', () => {
     it('Sucesso', async () => {
       req.body = carMock;
       await carController.create(req, res);
@@ -38,7 +38,7 @@ describe('Car Controller testes', () => {
     });
   });
 
-  describe('ReadOne Car', () => {
+  describe('Testa o ReadOne() Cars', () => {
     it('Sucesso', async () => {
       req.params = { id: carMockId._id };
       await carController.readOne(req, res);
@@ -49,7 +49,7 @@ describe('Car Controller testes', () => {
     });
   });
 
-  describe('Read Cars', () => {
+  describe('Testa o Read() Cars', () => {
     it('Sucesso', async () => {
       await carController.read(req, res);
 
