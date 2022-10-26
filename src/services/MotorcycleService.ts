@@ -8,7 +8,7 @@ export default class MotorcycleService implements IService<IMotorcycle> {
   constructor(model: IModel<IMotorcycle>) {
     this._motor = model;
   }
-
+ 
   public async create(obj: unknown): Promise<IMotorcycle> {
     const parsed = MotorZodSchema.safeParse(obj);
     if (!parsed.success) throw parsed.error;
