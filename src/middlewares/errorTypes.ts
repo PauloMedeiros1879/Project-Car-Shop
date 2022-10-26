@@ -8,11 +8,11 @@ type ErrorResObject = {
   httpStatus: number;
 };
 
-export type ErrorCatalog = {
+export type Err = {
   [key in ErrorTypes]: ErrorResObject;
 };
 
-export const error: ErrorCatalog = {
+export const error: Err = {
   EntityNotFound: {
     message: 'Object not found',
     httpStatus: 404,

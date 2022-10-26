@@ -13,10 +13,10 @@ const errorHandler: ErrorRequestHandler = (
   }
 
   const msgErrorType = err.message as keyof typeof ErrorTypes;
-  const mappedError = error[msgErrorType];
+  const mapError = error[msgErrorType];
 
-  if (mappedError) {
-    const { httpStatus, message } = mappedError;
+  if (mapError) {
+    const { httpStatus, message } = mapError;
     return res.status(httpStatus).json({ error: message });
   }
 
