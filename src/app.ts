@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/cars', carRouter);
-app.use('/motorcycle', motorcycleRouterRouter);
+app.use('/motorcycles', motorcycleRouterRouter);
 app.use(errorHandler);
 
 export default app;
