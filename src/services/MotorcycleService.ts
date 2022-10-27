@@ -29,4 +29,13 @@ export default class MotorcycleService implements IMotorService<IMotorcycle> {
     if (!motor) throw new Error(ErrorTypes.EntityNotFound);
     return motor;
   }
+
+  // atualizar determinado veículo do tipo moto que possua o id passado como parâmetro na rota.
+  public async update(_id: string, obj: unknown): Promise<IMotorcycle> {
+    const parsed = MotorZodSchema.safeParse(obj);
+    if (!parsed.success) throw parsed.error;
+    const motorUpdate = await this._motor.update(_id, parsed.data);
+    if (!motorUpdate) throw new Error(ErrorTypes.EntityNotFound);
+    return motorUpdate;
+  }
 }
