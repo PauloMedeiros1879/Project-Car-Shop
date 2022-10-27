@@ -2,4 +2,5 @@ export interface IMotorService<T> {
   create(obj: unknown): Promise<T>;
   read(): Promise<T[]>;
   readOne(_id: string): Promise<T>;
+  update(__id: string, obj: unknown): Promise<T>;
 }
