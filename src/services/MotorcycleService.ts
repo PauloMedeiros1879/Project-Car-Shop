@@ -15,4 +15,10 @@ export default class MotorcycleService implements IMotorService<IMotorcycle> {
     if (!parsed.success) throw parsed.error;
     return this._motor.create(parsed.data);
   }
+
+  //  listar todas as motos registradas
+  public async read(): Promise<IMotorcycle[]> {
+    const motorcycles = await this._motor.read();
+    return motorcycles;
+  }
 }
