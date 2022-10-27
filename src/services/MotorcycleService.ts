@@ -38,4 +38,11 @@ export default class MotorcycleService implements IMotorService<IMotorcycle> {
     if (!motorUpdate) throw new Error(ErrorTypes.EntityNotFound);
     return motorUpdate;
   }
+
+  // excluir os registros de uma moto
+  public async delete(_id: string): Promise<IMotorcycle> {
+    const motor = await this._motor.delete(_id);
+    if (!motor) throw new Error(ErrorTypes.EntityNotFound);
+    return motor;
+  }
 }
