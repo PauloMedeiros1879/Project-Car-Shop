@@ -1,8 +1,8 @@
-import { IService } from '../interfaces/IService';
+import { IMotorService } from '../interfaces/IMotorService';
 import { MotorZodSchema, IMotorcycle } from '../interfaces/IMotorcycle';
 import { IModel } from '../interfaces/IModel';
 
-export default class MotorcycleService implements IService<IMotorcycle> {
+export default class MotorcycleService implements IMotorService<IMotorcycle> {
   private _motor: IModel<IMotorcycle>;
 
   constructor(model: IModel<IMotorcycle>) {
