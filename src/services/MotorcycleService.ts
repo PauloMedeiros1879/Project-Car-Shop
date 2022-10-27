@@ -1,6 +1,7 @@
 import { IMotorService } from '../interfaces/IMotorService';
 import { MotorZodSchema, IMotorcycle } from '../interfaces/IMotorcycle';
 import { IModel } from '../interfaces/IModel';
+import { ErrorTypes } from '../middlewares/errorTypes';
 
 export default class MotorcycleService implements IMotorService<IMotorcycle> {
   private _motor: IModel<IMotorcycle>;
@@ -20,5 +21,12 @@ export default class MotorcycleService implements IMotorService<IMotorcycle> {
   public async read(): Promise<IMotorcycle[]> {
     const motorcycles = await this._motor.read();
     return motorcycles;
+  }
+
+  // possível listar uma única moto através do seu id
+  public async readOne(_id: string): Promise<IMotorcycle> {
+    const motor = await this._motor.readOne(_id);
+    if (!motor) throw new Error(ErrorTypes.EntityNotFound);
+    return motor;
   }
 }
