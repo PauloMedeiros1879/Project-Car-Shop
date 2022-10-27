@@ -28,4 +28,10 @@ export default class MotorcycleController {
     const result = await this._service.update(req.params.id, req.body);
     return res.status(200).json(result);
   }
+
+  // excluir os registros de uma moto
+  public async delete(req: Request, res: Response<IMotorcycle>) {
+    const result = await this._service.delete(req.params.id);
+    return res.status(204).json(result);
+  }
 }
