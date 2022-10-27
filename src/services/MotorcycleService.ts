@@ -8,7 +8,8 @@ export default class MotorcycleService implements IMotorService<IMotorcycle> {
   constructor(model: IModel<IMotorcycle>) {
     this._motor = model;
   }
- 
+  
+  // cadastrar uma nova moto
   public async create(obj: unknown): Promise<IMotorcycle> {
     const parsed = MotorZodSchema.safeParse(obj);
     if (!parsed.success) throw parsed.error;
