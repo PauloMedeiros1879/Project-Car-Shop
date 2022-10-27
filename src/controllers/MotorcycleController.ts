@@ -22,4 +22,10 @@ export default class MotorcycleController {
     const result = await this._service.readOne(req.params.id);
     return res.status(200).json(result);
   }
+
+  // atualizar determinado veículo do tipo moto que possua o id passado como parâmetro na rota.
+  public async update(req: Request, res: Response<IMotorcycle>) {
+    const result = await this._service.update(req.params.id, req.body);
+    return res.status(200).json(result);
+  }
 }
