@@ -16,4 +16,10 @@ export default class MotorcycleController {
     const result = await this._service.read();
     return res.status(200).json(result);
   }
+
+  // possível listar uma única moto através do seu id
+  public async readOne(req: Request, res: Response<IMotorcycle>) {
+    const result = await this._service.readOne(req.params.id);
+    return res.status(200).json(result);
+  }
 }
