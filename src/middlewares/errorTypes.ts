@@ -1,3 +1,4 @@
+// padronizando os erros de forma a serem tratados em qualquer camada
 export enum ErrorTypes {
   EntityNotFound = 'EntityNotFound',
   InvalidMongoId = 'InvalidMongoId',

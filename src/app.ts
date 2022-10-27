@@ -1,4 +1,5 @@
 import express from 'express';
+// erros assíncronos não são tratados por padrão e, por esse motivo, utilizaremos o pacote express-async-errors
 import 'express-async-errors';
 import errorHandler from './middlewares/error';
 import carRouter from './routes/CarRouter';
