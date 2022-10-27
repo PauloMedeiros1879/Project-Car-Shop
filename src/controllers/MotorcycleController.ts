@@ -10,4 +10,10 @@ export default class MotorcycleController {
     const result = await this._service.create(req.body);
     return res.status(201).json(result);
   }
+
+  // listar todas as motos registradas
+  public async read(_req: Request, res: Response<IMotorcycle[]>) {
+    const result = await this._service.read();
+    return res.status(200).json(result);
+  }
 }
